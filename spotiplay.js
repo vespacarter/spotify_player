@@ -45,9 +45,14 @@ function evaluatePlayer(){
     $('.js-player').trigger('play');
     $('.btn-play').addClass('playing');
   }
-
 }
 
+function printTime () {
+  var current = $('.js-player').prop('currentTime');
+  $('.seekbar > progress').attr('value',current);
+  console.debug('Current time: ' + current);
+}
 
 $('.js-submit-song').on('click', onSubmit);
 $('.btn-play').on('click', evaluatePlayer);
+$('.js-player').on('timeupdate', printTime);

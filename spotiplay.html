@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SPOTIFY PLAYER</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<form>
+  <!-- Add the form fields search for an Artist -->
+    <input type="text" name="js-songsearch" placeholder="Search for a song...">
+    <button class="js-submit-song" type="submit">SUBMIT</button>
+  </form>
+<div class="widget">
+		<div class="header">
+		<!-- Try adding/removing these classes: -->
+		<!-- disabled -->
+		<!-- playing -->
+		<div class="btn-play disabled"></div>
+
+		<div class="metadata">
+		  <p class="title"></p>
+		  <p class="author"></p>
+
+		  <div class="seekbar">
+		    <progress value="5" max="30"></progress>
+		  </div>
+		</div>
+		</div>
+		<div class="cover">
+		<img src="https://i.scdn.co/image/04da6dfc1f5f45fdeba938a0cc71cf372524fd43">
+		</div>
+
+		<audio src="https://example.com/song.mp3" class="js-player"></audio>
+	</div>
+
+
+
+<ul class="js-song-list"></ul>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 	
+<script src="spotiplay.js"></script>
+</body>
+</html>

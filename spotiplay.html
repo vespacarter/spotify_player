@@ -3,13 +3,16 @@
 <head>
 	<title>SPOTIFY PLAYER</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
 </head>
 <body>
 <form>
-  <!-- Add the form fields search for an Artist -->
     <input type="text" name="js-songsearch" placeholder="Search for a song...">
     <button class="js-submit-song" type="submit">SUBMIT</button>
-  </form>
+</form>
 <div class="widget">
 		<div class="header">
 		<!-- Try adding/removing these classes: -->
@@ -31,15 +34,37 @@
 		</div>
 
 		<audio src="https://example.com/song.mp3" class="js-player"></audio>
-	</div>
+</div>
+<div class="modal fade js-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <div class="modal-header">
+        <!-- Close button -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
 
+        <h2>This is the modal's header.</h2>
+      </div>
 
-<ul class="js-song-list"></ul>
+      <div class="modal-body">
+        <p>This is the modal's body.</p>
+      </div>
+	  <div class="band-pic">
+			<img class="img-responsive img-thumbnail" src="https://i.scdn.co/image/04da6dfc1f5f45fdeba938a0cc71cf372524fd43">
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 	
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="spotiplay.js"></script>
 </body>
 </html>

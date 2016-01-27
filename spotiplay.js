@@ -1,3 +1,5 @@
+var myartistId;
+
 function onSubmit (event) {
   event.preventDefault();
   console.debug('SUBMITTED');
@@ -18,14 +20,14 @@ function onSubmit (event) {
   }
 
   function addSong(song){
-    console.log(song);
-    var myartist = song.artists[0].name;
+    var myartistname = song.artists[0].name;
+    myartistId = song.artists[0].id;
     var mysong  = song.name;
     var myalbum = song.album.name;
     var myalbumimage = song.album.images[0].url;
     var mysongsource = song.preview_url;
     $('.title').text(mysong);
-    $('.author').text(myartist);
+    $('.author').text(myartistname);
     $('.cover > img').attr('src',myalbumimage);
     $('.btn-play').removeClass('disabled');
     $('audio').attr('src', mysongsource);
@@ -50,9 +52,29 @@ function evaluatePlayer(){
 function printTime () {
   var current = $('.js-player').prop('currentTime');
   $('.seekbar > progress').attr('value',current);
-  console.debug('Current time: ' + current);
+}
+
+function showArtistModal(){
+  function onLoadSuccess (response) {
+    console.debug('SUCCESS');
+    console.log(response);
+    $('.modal-body').text('Genre: ' + response.genres[0]);
+    $('.band-pic > img').attr('src', response.images[0].url);
+  }
+  function onLoadFailure (err) {
+    console.error(err.responseJSON);
+  }
+
+  var requestartist = 'https://api.spotify.com/v1/artists/' + myartistId;
+  var requeststring = $.get(requestartist);
+  requeststring.done(onLoadSuccess);
+  requeststring.fail(onLoadFailure);
+  $('.js-modal').modal();
+  $('.modal-header > h2').html('<center>' + $('.author').text() + '</center>');
 }
 
 $('.js-submit-song').on('click', onSubmit);
 $('.btn-play').on('click', evaluatePlayer);
 $('.js-player').on('timeupdate', printTime);
+$('.author').on('click', showArtistModal);
+
